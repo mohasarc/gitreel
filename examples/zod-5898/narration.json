@@ -1,0 +1,50 @@
+{
+  "voice": "am_michael",
+  "speed": 1.1,
+  "scenes": [
+    {
+      "id": "cold-open",
+      "text": "zod, the validation library you probably already trust, just patched a sneaky one. PR fifty eight ninety eight. One commit, two files, and a three line fix for a prototype hijack. Let's review it."
+    },
+    {
+      "id": "goal",
+      "text": "The goal. When zod parses unknown input, a malicious double underscore proto key must not be allowed to hijack the parsed object. That's it. That's the PR."
+    },
+    {
+      "id": "context",
+      "text": "Thirty seconds of context, and none of this is new. Input comes in, usually from JSON. The schema validates the keys it knows about. Anything extra falls through to handle catchall, which copies the extras onto a fresh result object. And that little copy loop? That's our crime scene."
+    },
+    {
+      "id": "files-overview",
+      "text": "The whole PR, one screen. Two files. schemas dot T S, in core, gets the fix. Three lines. And object dot test dot T S gets forty six lines of tests, because this is exactly the kind of bug you never want back."
+    },
+    {
+      "id": "problem",
+      "text": "Here's the exploit. JSON parse happily produces an object with a proto key. zod validates name, fine. Then handle catchall copies the extras onto a plain object. But assigning to proto on a plain object doesn't create a property. It replaces the prototype. So, is admin? True. Inherited, attacker controlled, and wearing a zod validated badge. Ouch."
+    },
+    {
+      "id": "roadmap",
+      "text": "The route is short. One, the fix in core. Two, the proof, a wall of tests. Three, the payoff. Go."
+    },
+    {
+      "id": "fix",
+      "text": "Step one, the fix. In handle catchall's key loop, one new guard. If the key is proto, skip it entirely. No assignment, no setter, no hijack. Three lines, including the comment. The best security patches are boring."
+    },
+    {
+      "id": "tests",
+      "text": "Step two, the proof. A new test suite feeds the poisoned input to every catchall path. Loose object. Passthrough. Catchall. Async with jitless. And strict. Each one asserts that is admin is gone, and the prototype is still object dot prototype."
+    },
+    {
+      "id": "payoff",
+      "text": "Step three, the payoff. Same exploit, patched zod. Is admin? Undefined. The prototype? Untouched. The poisoned key just evaporates."
+    },
+    {
+      "id": "review-1",
+      "text": "Review time. One thing worth a look. In strict mode, unknown keys are normally errors. But proto is now silently skipped, not reported. There's even a test pinning that behavior. Deliberate? Clearly. But silently swallowing a hostile key, instead of flagging it, is a real design choice. Worth a conscious nod in review."
+    },
+    {
+      "id": "verdict",
+      "text": "The verdict. Nothing blocking. One conscious design choice to nod at. Tiny fix, huge blast radius, tests on every path. Ship it. And bump your lockfiles."
+    }
+  ]
+}

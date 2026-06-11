@@ -13,6 +13,7 @@ export type DiagramNode = {
   readonly w?: number;
   readonly h?: number;
   readonly kind?: "existing" | "new" | "focus";
+  readonly badge?: string;
   readonly atSecond?: number;
 };
 
@@ -157,7 +158,7 @@ export const DiagramScene: React.FC<{
                   <div style={{ fontFamily: theme.fontDisplay, fontSize: 23, color: theme.textDim }}>{node.sub}</div>
                 )}
               </div>
-              {isNew && (
+              {(node.kind === "new" || (node.kind === "focus" && node.badge)) && (
                 <div
                   style={{
                     position: "absolute",
@@ -174,7 +175,7 @@ export const DiagramScene: React.FC<{
                     boxShadow: `0 0 30px ${node.kind === "focus" ? theme.accent : theme.green}66`,
                   }}
                 >
-                  NEW
+                  {node.kind === "focus" ? node.badge : "NEW"}
                 </div>
               )}
             </div>

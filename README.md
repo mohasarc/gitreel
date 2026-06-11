@@ -61,6 +61,10 @@ Episodes are plain TSX files in your workspace that import scene primitives from
 `FileTreeScene`, `VerdictCard`, and friends. The narration manifest drives scene durations, so
 audio and visuals never drift. Keep your workspace under git; episodes are re-renderable forever.
 
+A complete real episode lives in [`examples/zod-5898/`](examples/zod-5898/) — the screenplay
+behind the demo video above. To re-render it:
+`cp -r examples/zod-5898 "$(gitreel where)/episodes/" && gitreel narrate zod-5898 && gitreel render zod-5898`.
+
 ## Licensing notes
 
 - **gitreel is MIT.**

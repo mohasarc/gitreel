@@ -84,3 +84,16 @@ plus `SceneShell`/`Panel`/`FileChip` for bespoke scenes. SFX in the workspace: `
   the diff, never pseudo-code presented as real.
 - New scene-type ideas are welcome — build bespoke scenes from `SceneShell`/`Panel` primitives in
   the episode file; they don't need to live in the engine.
+
+## Gotchas (each one cost a render — respect them)
+
+- The bundler does NOT type-check episode.tsx; type errors surface only as runtime crashes during
+  still/render. Render one cheap still immediately after writing the episode to catch them early.
+- `spotlights[].lines` ranges are TUPLES: `[[4, 9]]`, never `{ from: 4, to: 9 }`.
+- Diagram arrow labels draw UNDER node boxes — keep them short and away from nodes.
+- All `atSecond` timings are scene-local; narration starts after a 0.25s lead pad, so add 0.25 to
+  every word-fraction timing.
+- `DiagramScene` nodes: `kind: "new"` shows a NEW badge automatically; `kind: "focus"` is for
+  spotlighting pre-existing code and shows a badge only if you set `badge: "..."` — never present
+  existing code as new.
+- `React` must be imported in episode.tsx.
