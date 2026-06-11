@@ -1,0 +1,47 @@
+{
+  "name": "gitreel",
+  "version": "0.1.0",
+  "description": "Turn your pull requests into movie trailers — narrated, fast-paced, agent-authored PR review videos.",
+  "keywords": ["pull-request", "code-review", "video", "remotion", "tts", "agent", "skill"],
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "gitreel": "dist/cli/index.js"
+  },
+  "exports": {
+    "./engine": {
+      "types": "./dist/engine/index.d.ts",
+      "default": "./dist/engine/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": ["dist", "assets", "templates", "skills", "README.md", "LICENSE"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run build"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@remotion/bundler": "^4.0.0",
+    "@remotion/cli": "^4.0.0",
+    "@remotion/renderer": "^4.0.0",
+    "commander": "^12.1.0",
+    "diff": "^7.0.0",
+    "kokoro-js": "^1.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.0",
+    "shiki": "^1.29.0"
+  },
+  "devDependencies": {
+    "@types/diff": "^6.0.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^18.3.0",
+    "typescript": "^5.7.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild", "onnxruntime-node", "protobufjs", "sharp"]
+  }
+}

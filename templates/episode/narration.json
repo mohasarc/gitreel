@@ -1,0 +1,8 @@
+{
+  "voice": "am_michael",
+  "speed": 1.1,
+  "scenes": [
+    { "id": "cold-open", "text": "This is a freshly scaffolded gitreel episode." },
+    { "id": "goal", "text": "Replace these scenes with your story. Then narrate, verify stills, and render." }
+  ]
+}
