@@ -15,7 +15,7 @@
     },
     "./package.json": "./package.json"
   },
-  "files": ["dist", "assets", "templates", "skills", "README.md", "LICENSE"],
+  "files": ["dist", "assets/music", "assets/sfx", "templates", "skills", "README.md", "LICENSE"],
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "prepublishOnly": "npm run build"
