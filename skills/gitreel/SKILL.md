@@ -1,6 +1,6 @@
 ---
 name: gitreel
-description: Turn a GitHub pull request into a narrated, fast-paced movie-trailer-style review video. Use when the user asks for a PR video, a video walkthrough/review of a PR, or invokes /gitreel. Args: PR number or URL (required), mode `short` (default, ~3-5 min) or `long` (~6-10 min), optional path to a review .md whose findings get woven into the video, optional --draft for a fast low-res preview.
+description: "Turn a GitHub pull request into a narrated, fast-paced movie-trailer-style review video. Use when the user asks for a PR video, a video walkthrough/review of a PR, or invokes /gitreel. Args - PR number or URL (required); mode short (default, ~3-5 min) or long (~6-10 min); optional path to a review .md whose findings get woven into the video; optional --draft for a fast low-res preview."
 ---
 
 # gitreel
